@@ -1,0 +1,32 @@
+{
+  "name": "code-lab",
+  "version": "1.0.0",
+  "description": "Paul Jesus Benites Romero website at Mohole",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GiovannaMonti/code-lab.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GiovannaMonti/code-lab/issues"
+  },
+  "homepage": "https://github.com/GiovannaMonti/code-lab#readme",
+  "devDependencies": {
+    "@parcel/packager-raw-url": "^2.4.0",
+    "@parcel/transformer-sass": "^2.4.0",
+    "@parcel/transformer-webmanifest": "^2.4.0",
+    "parcel": "^2.4.0",
+    "posthtml-include": "^1.7.2"
+  },
+  "dependencies": {
+    "@barba/core": "^2.9.7",
+    "gsap": "^3.9.1",
+    "locomotive-scroll": "^4.1.4"
+  }
+}

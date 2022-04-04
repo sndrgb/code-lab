@@ -1,0 +1,94 @@
+//text mixins
+@mixin canela{
+    font-family: 'Canela-Light';
+    font-weight: normal;
+    letter-spacing: 0.5px;
+}
+@mixin canela-italic{
+    font-family: 'Canela-LightItalic';
+    font-weight: normal;
+    letter-spacing: 0.5px;
+}
+@mixin objectsans-medium{
+    font-family: 'ObjectSans-Medium';
+    font-weight: normal;
+    letter-spacing: 0.4px;
+}
+@mixin objectsans-regular{
+    font-family: 'ObjectSans-Regular';
+    font-weight: normal;
+    letter-spacing: 0.4px;
+}
+@mixin objectsans-light{
+    font-family: 'ObjectSans-Light';
+    font-weight: normal;
+    letter-spacing: 0.4px;
+}
+@mixin heading-xxl {
+    @include canela();
+    font-size: 11.25rem;
+    line-height: 198px;
+    color: $diesel;
+}
+@mixin heading-xl{
+    @include canela();
+    font-size: 4.5rem;
+    line-height: 90px;
+    color: $deep-coffee;
+}
+@mixin heading-l{
+    @include canela();
+    font-size: 4rem;
+    line-height: 80px;
+    color: $diesel;
+}
+@mixin heading-m{
+    @include canela();
+    font-size: 3.5rem;
+    line-height: 67.2px;
+    letter-spacing: .6px;
+}
+@mixin heading-s {
+    @include canela();
+    font-size: 3.125rem;
+    line-height: 60px;
+    color: $diesel;
+}
+@mixin heading-xs{
+    @include objectsans-light();
+    font-size: 3rem;
+    line-height: 67px;
+}
+@mixin heading-xxs{
+    @include canela();
+    font-size: 2.5rem;
+    line-height: 45px;
+    color: $diesel;
+}
+@mixin body-xxl{
+    @include objectsans-regular();
+    font-size: 28px;
+    line-height: 42px;
+    text-align: center;
+}
+@mixin body-xl{
+    @include canela();
+    font-size: 1.5rem;
+    line-height: 24px;
+    text-align: center;
+}
+@mixin body-l{
+    @include objectsans-regular();
+    font-size: 1.125rem;
+    line-height: 20px;
+    text-align: center;
+}
+@mixin body-m{
+    @include objectsans-regular();
+    line-height: 29px;
+}
+@mixin body-s{
+    @include objectsans-regular();
+    font-size: .75rem;
+    line-height: 17px;
+}

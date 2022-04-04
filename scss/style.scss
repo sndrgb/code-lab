@@ -1,0 +1,1178 @@
+@import './_reset';
+@import './_variables';
+@import './_mixins';
+@import './transition';
+
+.display-desktop{
+    display: none;
+}
+.display-mobile{
+    display: block;
+}
+.vertical-menu{
+    display: none;
+}
+// HEADER MOBILE
+.logo, #open-menu{
+    z-index: 3000;
+}
+.hamburger {
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+    z-index: 1;
+
+  }
+
+  .sidebar {
+    display: flex;
+    align-items: center;
+    z-index: 2000;
+    height: 100vh;
+    width: 300px;
+    background: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 0 60px;
+    display: flex;
+    flex-direction: column;
+    transform: translatex(-100%);
+    transition: transform 0.4s ease-in-out;
+
+    &__close {
+      position: absolute;
+      top: 50%;
+      right: -30px;
+      background: #fff;
+      height: 60px;
+      width: 60px;
+      border-radius: 50%;
+      box-shadow: 0 0 20px 20px rgba(0,0,0,0.03);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transform: translatex(-100%);
+      cursor: pointer;
+      transition: transform 0.4s ease-in-out 0.2s;
+
+      &::before,
+      &::after {
+        content: "";
+        height: 2px;
+        background: #898989;
+        width: 24px;
+        display: block;
+        position: absolute;
+      }
+
+      &::after {
+        transform: rotate(90deg);
+      }
+    }
+
+    &__menu {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-around;
+      font-size: 36px;
+      margin-top: 80px;
+      margin-bottom: 80px;
+      color: #898989;
+
+      a {
+        color: currentcolor;
+        text-decoration: none;
+        transform: translatex(-80%);
+        transition: transform 0.4s ease-in-out;
+        @for $i from 1 through 7 {
+          &:nth-child(#{$i}) {
+            transition-delay: $i * 0.05s;
+          }
+        }
+      }
+      a.active{
+        color: $red;
+        font-weight: bold;
+    }
+    }
+  }
+  .sidebar{
+      .menu-items{
+          @include body-l;
+          display: flex;
+          flex-direction: column;
+          text-align: left;
+          gap: 2rem;
+      }
+      .language{
+          color: $diesel;
+          font-weight: bold;
+      }
+  }
+  .menu-control {
+    display: none;
+
+    &:checked {
+      & + .sidebar {
+        transform: translatex(0);
+      }
+
+      & + .sidebar .sidebar__close {
+        transform: translatex(0) rotate(45deg);
+      }
+
+      & + .sidebar .sidebar__menu a {
+        transform: translatex(0);
+      }
+    }
+  }
+//HEADER
+.open-menu{
+    @include body-s;
+    letter-spacing: 1.5px;
+    color: $red;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    min-height: 120px;
+    padding: 20px 10px;
+    .menu-items{
+        display: none;
+    }
+}
+//FOOTER
+footer{
+    @include body-s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    gap: .5rem;
+    padding: 20px 10px;
+    #copyright{
+        display: flex;
+        flex-direction: column;
+        gap: .2rem;
+        order: 1;
+    }
+    #dev{
+        color: $grey;
+        order: 1;
+        span{
+            color: $red;
+            cursor: pointer;
+        }
+    }
+    .social{
+        z-index: 1300;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+    }
+}
+main{
+    margin: 0px 10px 0px;
+}
+h1, h2{
+    @include heading-l;
+}
+h2{
+    padding: 2rem 0;
+}
+section{
+    color: $mountain-mist;
+}
+.buttons{
+    @include body-l();
+    display: flex;
+    flex-direction: column;
+    a{
+        padding: 1rem 0;
+        color: $diesel;
+        transition: all .3s ease-in-out;
+        &:after{
+            display: block;
+            content: "";
+            height: 5px;
+            transform: scaleY(.2);
+            margin-top: 1.5rem;
+            background-color: $red;
+            transition: transform .3s ease-in-out;
+          }
+        &:hover{
+            color: $red;
+        }
+        &:hover:after{
+            transform: scaleY(.8);
+        }
+    }
+}
+//HOME
+.home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100vh;
+/*     footer{
+        position: fixed;
+        bottom: 0;
+    } */
+    p.heading-xxs{
+        @include heading-xxs;
+        font-size: 2rem; // lo voglio leggermente più piccolo
+        padding: 1.5rem 0;
+    }
+}
+//CHI SONO
+.pagina{
+    @include body-m;
+    h1{
+        span{
+            color: $red;
+        }
+    }
+    #service{
+        display: none;
+    }
+    .buttons{
+        padding-bottom: 5rem;
+    }
+    .bio{
+        padding: 2rem 0;
+        color: $mountain-mist;
+        display: flex;
+        flex-direction: column;
+        img{
+            padding-bottom: 2rem;
+        }
+        .desc{
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+    }
+    .corsi{
+        .dati{
+            order: 1;
+            padding: 0 0 3rem;
+            @include heading-xxs;
+            .label{
+                padding: 2rem 0;
+                @include body-s;
+                color: $red;
+            }
+            .dati-specifici{
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                grid-template-rows: repeat(4, 1fr);
+                row-gap: 1.3rem;
+                span{
+                    color: $red;
+                }
+            }
+        }
+        .desc{
+            display: flex;
+            flex-direction: column;
+            .text{
+                order: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+            }
+            .logos{
+                order: 2;
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: space-between;
+                padding: 4rem 0;
+                img{max-width: 50%;}
+            }
+            .buttons{
+                order: 3;
+            }
+        }
+    }
+    .postehack{
+        padding: 3rem 0;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        color: $grey;
+    }
+    .public-speaking{
+        article{
+            padding: 6rem 0 0;
+            h2{
+                @include heading-xxs;
+            }
+            .labels{
+                display: flex;
+                justify-content: space-between;
+                .label-left{
+                    color: $red;
+                }
+                .label-right{
+                    color: $diesel;
+                }
+            }
+            img{
+                width: 100%;
+                padding-bottom: 1.5rem;
+            }
+            .buttons{
+                padding: 1.5rem 0 0;
+                width: max-content;
+            }
+        }
+    }
+    .premi{
+        .logos{
+            padding: 4rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            img{
+                max-height: 100px;
+                max-width: 50vw;
+                padding-bottom: 1.2rem;
+            }
+            #dandad{
+                padding: 0 3rem 1.2rem;
+            }
+        }
+    }
+    .collab{
+        max-width: calc(100% - 10px);
+        background-color: $dawn-pink;
+        box-shadow: 10px 10px rgba(0,0,0,0.5);
+        padding: 10px;
+        margin-bottom: 6rem;
+        h2{
+            @include heading-s;
+            padding-top: 3rem;
+        }
+        .buttons{
+            padding-top: 2rem;
+            padding-bottom: 1rem;
+        }
+    }
+}
+// MOTTO
+.motto{
+    text-align: left;
+    background-color: $diesel;
+    padding: 0 10px 4rem;
+    h2{
+        color: $white;
+    }
+    p{
+        @include body-m;
+        color: $grey;
+    }
+}
+
+// SERVIZI
+.pagina.servizi{
+    .dashed-circle{
+        animation: dash 30s linear infinite;
+    }
+    @keyframes dash {
+        to {
+          stroke-dashoffset: 1000;
+        }
+    }
+    h1{
+        padding-bottom: 2rem;
+    }
+    .strategia-esperienza{
+        span{
+            color: $red;
+        }
+        .desc{
+            display: flex;
+            flex-direction: column;
+            p{
+                padding-bottom: 2rem;
+            }
+            h3{
+                @include body-s;
+                font-weight: bold;
+                padding-bottom: 1rem;
+            }
+        }
+    }
+    .scoperta-analisi{
+        .desc.display-mobile{
+            p{
+                padding-bottom: 2rem;
+            }
+        }
+    }
+    .accordion.display-mobile{
+        padding: 2rem 0;
+        h2{
+            @include heading-s;
+        }
+    }
+}
+.pagina.collaborazione{
+    .dashed-circle{
+        animation: dash 30s linear infinite;
+    }
+    @keyframes dash {
+        to {
+          stroke-dashoffset: 1000;
+        }
+    }
+    span{
+        color: $red;
+    }
+    .brand{
+        h3{
+            text-align: center;
+            color: $diesel;
+            font-weight: bold;
+        }
+        padding-bottom: 3rem;
+    }
+    .mobile-logo-group{
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .come-collaboro{
+        p{
+            padding-bottom: 2rem;
+        }
+    }
+    .buttons.display-desktop{
+        display: none;
+    }
+    .accordion.display-mobile{
+        padding: 2rem 0;
+        h2{
+            @include heading-s;
+        }
+    }
+}
+
+.contattami{
+    h2{
+        text-align: center;
+        padding-bottom: 5rem;
+    }
+    p{
+        text-align: center;
+    }
+    .buttons{
+        padding: 2rem 0;
+        @include body-m;
+    }
+    .contact-form{
+        padding: 4rem 0;
+    }
+    form{
+        input[type=text]{
+            @include body-s;
+            color: $pumice;
+            opacity: .77;
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid $pumice;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            display: block;
+            &:focus{
+                outline: none
+            }
+            ::placeholder{
+                color: $pumice;
+                opacity: .77;
+            }
+        }
+       input[type=radio]{
+             -webkit-appearance: none;
+            background-color: #fafafa;
+            border: 1px solid $diesel;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+            padding: 9px;
+            border-radius: 50%;
+            display: inline-block;
+            position: relative;
+            &:active, &:checked:active {
+                box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+            }
+            &:checked {
+                background-color: $red;
+                box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1);
+                color: #99a1a7;
+            }
+
+        }
+        #lascia-messaggio{
+            font-size: 16px;
+            align-self: flex-start;
+            color: $red;
+            padding-bottom: 3rem;
+            span{
+                color: $grey;
+                padding-left: 6rem;
+            }
+        }
+        .buttons{
+            #invia{
+                border:none;
+                background-image:none;
+                background-color:transparent;
+                -webkit-box-shadow: none;
+                -moz-box-shadow: none;
+                box-shadow: none;
+                @include body-l();
+                padding: 1rem 0;
+                color: $red;
+                transition: all .3s ease-in-out;
+                &:after{
+                    display: block;
+                    content: "";
+                    height: 5px;
+                    transform: scaleY(.2);
+                    margin-top: 1.5rem;
+                    background-color: $red;
+                    transition: transform .3s ease-in-out;
+                }
+                &:hover{
+                    color: $red;
+                }
+                &:hover:after{
+                    transform: scaleY(.8);
+                }
+            }
+        }
+        #invia{
+            border:none;
+            background-image:none;
+            background-color:transparent;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            padding: 1rem 0;
+        color: $diesel;
+        transition: all .3s ease-in-out;
+        &:after{
+            display: block;
+            content: "";
+            height: 5px;
+            transform: scaleY(.2);
+            margin-top: 1.5rem;
+            background-color: $red;
+            transition: transform .3s ease-in-out;
+          }
+        &:hover{
+            color: $red;
+        }
+        &:hover:after{
+            transform: scaleY(.8);
+        }
+        }
+        .checklist{
+            padding: 4rem 0;
+            display: flex;
+            align-self: flex-start;
+            text-align: left;
+            flex-direction: column;
+            h3{
+                text-transform: uppercase;
+                font-size: 1rem;
+                padding-bottom: 3rem;
+                color: $red;
+            }
+            label{
+                @include heading-s;
+            }
+            .checklist-item{
+                padding: 2rem 1rem;
+                display: flex;
+                align-items: center;
+                gap: 2rem;
+            }
+        }
+    }
+}
+
+/* stile accordion */
+.accordion-toggle{
+    display: block;
+    text-decoration: none;
+    color: $diesel;
+}
+/* nascondiamo in partenza i testi */
+.accordion-content{
+    display: none;
+}
+/* con il click + js aggiungiamo la classe active */
+.accordion-content.active{
+    display: block;
+}
+.accordion-content.active p{
+    padding-bottom: 2rem;
+}
+/* CSS per animazione faq*/
+.accordion-content.active p{
+    opacity: 1; /* fallback se non funziona l'animation */
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    animation-duration: 0.6s;
+}
+@keyframes fadeInOpacity{
+    0%{
+        transform: translateY(-40px);
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.slider{
+    position: relative;
+    overflow: hidden;
+    min-height: 300px;
+}
+.slider-inner{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 200%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    pointer-events: none;
+    transition: 0s ease-in;
+    img{
+        min-width: 100%;
+    }
+}
+.alcuni-progetti .slider-inner{
+    grid-template-columns: repeat(4, 1fr);
+}
+.project-label{
+    color: $red;
+}
+
+// ----------- MEDIA 900px ---------------
+
+@media(min-width: 900px){
+    .vertical-menu{
+        z-index: 1200;
+        padding: 0;
+        display: block;
+        position: fixed;
+        right: 0;
+        top: 122.5px;
+        nav{
+            height: calc(100vh - 122.5px);
+        }
+        .active-section{
+            color: $red;
+        }
+        li{
+            writing-mode:vertical-rl;
+            padding: 1rem;
+            a{
+                font-size: .9rem;
+                text-decoration: none;
+                color: $grey;
+            }
+        }
+    }
+    #open-menu, aside, #menu-control{
+        display: none;
+    }
+    .display-desktop{
+        display: block;
+    }
+    .display-mobile{
+        display: none;
+    }
+    header{
+        @include objectsans-regular;
+        position: fixed;
+        top: 0;
+        padding: 20px 40px;
+        background-color: white;
+        z-index: 2000;
+        .open-menu{
+            display: none;
+        }
+        .menu-items{
+            display: flex;
+            max-width: 70vw;
+            justify-content: space-between;
+            .menu-item{
+                color: $diesel;
+                opacity: .5;
+                padding: 0 1rem;
+            }
+            .menu-item.active{
+                color: $red;
+                font-weight: bold;
+                opacity: 1;
+            }
+            .language{
+                opacity: 1;
+                font-weight: bold;
+            }
+        }
+    }
+    footer{
+        padding: 20px 40px;
+        flex-direction: row;
+        align-items: center;
+        #dev{
+            order: 0;
+            span{
+                color: $grey;
+            }
+        }
+        #copyright{
+            order: 0;
+            flex-direction: row;
+        }
+        #consulente{
+            display: none;
+        }
+    }
+    main{
+        margin: 130px 40px 0;
+    }
+    h1, h2{
+        @include heading-xxl;
+        padding: 2rem 0;
+    }
+    section{
+        padding: 3rem;
+    }
+    .buttons{
+        flex-direction: row;
+        padding: 3rem 0;
+        gap: 5rem;
+        a{
+            padding: 1.5rem 0;
+        }
+    }
+    .home{
+        main{
+            padding-top: 120px;
+        }
+    }
+    //CHI SONO
+    body{
+        position: relative;
+    }
+    .pagina{
+        h1{
+            padding: 3rem 10rem;
+        }
+        #service{
+            display: inline;
+        }
+        .bio{
+            flex-direction: row;
+            gap: 10rem;
+            padding: 3rem;
+            img{
+                order: 1;
+                height: 100%;
+            }
+            .desc{
+                transform: translateY(100px);
+                z-index: -1;
+            }
+        }
+        .buttons{
+            padding: 8rem 3rem;
+        }
+        .corsi{
+            display: grid;
+            grid-template-columns: 1fr 1.7fr;
+            align-items: start;
+            column-gap: 3rem;
+            h2{
+                grid-column-start: 2;
+                grid-column-end: 3;
+            }
+            .dati{
+                order: 0;
+                padding: 0;
+                @include heading-l;
+                .label{
+                    padding-top:0;
+                    @include body-m;
+                }
+            }
+            .desc{
+                .buttons{
+                    padding: 0;
+                }
+                .logos{
+                    padding: 6rem 0;
+                }
+            }
+        }
+        .postehack{
+            padding: 10rem 0;
+            img, p{
+                padding: 0 3rem;
+            }
+            #postehack1{
+                align-self: flex-start;
+            }
+            #postehack2{
+                align-self: flex-end;
+            }
+        }
+        .public-speaking{
+            .subtitle{
+                max-width: 60vw;
+            }
+            .articles{
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                column-gap: 20rem;
+                padding-bottom: 5rem;
+                .right{
+                    padding-top: 30rem;
+                }
+            }
+        }
+        .premi{
+            .subtitle{
+                max-width: 60vw;
+            }
+            .logos{
+                img{
+                    max-width: 100%;
+                    max-height: 150px;
+                }
+            }
+        }
+        .collab{
+            max-width: 80vw;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 10px 10px rgba(0,0,0,0.5);
+            h2{
+                text-align: center;
+                @include heading-xl;
+            }
+            .subtitle{
+                text-align: center;
+            }
+            .buttons{
+                display: flex;
+                justify-content: center;
+            }
+        }
+    }
+    .motto{
+        text-align: center;
+        min-height: 90vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-bottom: 0;
+        h2, p{
+            z-index: 1;
+            position: relative;
+        }
+        p{
+            @include body-l;
+        }
+        .circle{
+            position: absolute;
+            bottom: 0;
+            left: calc(50% - 1056px/2);
+            z-index: 0;
+        }
+        .dashed-circle{
+            animation: dash 30s linear infinite;
+        }
+    }
+    .motto.display-mobile{
+        display: none;
+    }
+    footer.black-bg{
+        background-color: $diesel;
+        color: $grey;
+    }
+
+    // SERVIZI
+    .pagina.servizi{
+        .dashed-circle{
+            animation: dash 30s linear infinite;
+        }
+        h1{
+            padding-bottom: 5rem;
+        }
+        .collab.display-desktop{
+            .buttons{
+                padding-top: 2rem;
+            }
+        }
+        .accordion.display-desktop{
+            text-align: center;
+            h2{
+                @include heading-xl;
+                border-bottom: .5px solid $grey;
+                color: $diesel;
+            }
+        }
+        .buttons{
+            padding-top: 0;
+        }
+        .scoperta-analisi{
+            text-align: center;
+            .label{
+                font-weight: normal;
+                color: $red;
+            }
+            .triangles{
+                padding: 3rem 0;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            @keyframes dash {
+                to {
+                  stroke-dashoffset: 1000;
+                }
+            }
+
+            .dashed-triangle{
+                animation: dash 30s linear infinite;
+            }
+            .desc{
+                text-align: center;
+                padding: 8rem;
+                p{
+                    padding-bottom: 1.5rem;
+                }
+            }
+        }
+        .kickoff{
+            background-color: $dawn-pink;
+            margin: 0 -40px;
+            h2{
+                text-align: center;
+                @include heading-xl;
+                color: $diesel;
+                border-bottom: .5px solid $grey;
+            }
+            .grid{
+                color: $diesel;
+                padding: 5rem;
+                display: grid;
+                grid-template-columns: 2.5fr 1fr;
+                column-gap: 3rem;
+                .desc{
+                    p{
+                        padding-bottom: 4rem;
+                    }
+                    h3{
+                        padding-bottom: 1.5rem;
+                        @include heading-xs;
+                    }
+                }
+                .labels{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 4rem;
+                }
+                .label{
+                    font-weight: normal;
+                    letter-spacing: .8px;
+                    padding-bottom: .5rem;
+                }
+
+            }
+        }
+    }
+    .motto-servizi{
+        position: relative;
+        text-align: left;
+        padding: 8rem;
+        span{
+            @include canela-italic;
+        }
+    }
+    .pagina.collaborazione{
+        overflow-x: hidden;
+        .brand{
+            padding-bottom: 8rem;
+            .label{
+                @include body-m;
+                letter-spacing: 2px;
+                padding-bottom: 2rem;
+            }
+        }
+        .come-collaboro{
+            text-align: center;
+            .desc{
+                text-align: left;
+            }
+            .buttons{
+                justify-content: center;
+            }
+        }
+        .articles{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            column-gap: 15rem;
+            padding-bottom: 5rem;
+            .right{
+                padding-top: 10rem;
+            }
+            article{
+                display: flex;
+                gap: 3rem;
+                padding: 6rem 0;
+                h3.label-left{
+                    @include heading-l;
+                }
+                h3.title{
+                    color: $diesel;
+                    padding-bottom: 1rem;
+                }
+            }
+
+        }
+        .agenzie-digitali{
+            h2{
+                @include heading-xl;
+                color: $diesel;
+            }
+            p{
+                text-align: center;
+                padding: 2rem 0 4rem;
+            }
+            .label{
+                letter-spacing: 2px;
+                padding-bottom: 2rem;
+                color: $diesel;
+                font-weight: normal;
+                text-transform: uppercase;
+            }
+            .attivita{
+                @include body-xl;
+                display: flex;
+                gap: 3rem;
+                flex-wrap: wrap;
+                justify-content: center;
+                color: $mountain-mist;
+                p{
+                    padding: 1.5rem;
+                    border: 1px solid $pumice;
+                }
+            }
+            .contratto{
+                padding: 5rem 0;
+                text-align: left;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                .label{
+                    padding: 1rem 0;
+                }
+                p{
+                    text-align: left;
+                    padding: 0;
+                }
+            }
+            .logos{
+                display: flex;
+                justify-content: center;
+                padding: 2rem 0;
+                img{
+                    max-width: 35%;
+                }
+            }
+        }
+        .vuoi-collaborare{
+            margin: 0px calc(-48px - 3rem);
+            padding: 8rem 15rem 8rem 10rem;
+            text-align: left;
+            background-color: $dawn-pink;
+            h3{
+                @include heading-xs;
+                color: $diesel;
+                padding-bottom: 3rem;
+            }
+            .buttons{
+                padding: 0;
+                justify-content: left;
+            }
+        }
+        .alcuni-progetti{
+            text-align: left;
+            padding: 0;
+        }
+    }
+    .slide-img img{
+        box-shadow: 0px 10px 10px rgba(0,0,0,.1);
+    }
+    .contattami{
+        .buttons{
+            display: flex;
+            justify-content: center;
+        }
+        form{
+            padding: 0 8rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            input[type=text]{
+                @include body-l;
+                text-align: left;
+            }
+            .checklist{
+                label{
+                    @include heading-l;
+                }
+            }
+        }
+    }
+    .accordion-content.active p{
+        padding: 2rem;
+    }
+    .slider{
+        min-height: 500px;
+        margin-top: 5rem;
+    }
+    .slider-inner {
+        gap: 30px;
+    }
+    .alcuni-progetti .slider{
+        min-height: 550px;
+    }
+}
+@media(min-width: 1700px){
+    .slider{
+        min-height: 700px;
+        margin-top: 5rem;
+    }
+}
